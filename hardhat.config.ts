@@ -71,7 +71,7 @@ const config: HardhatUserConfig = {
   },
   spdxLicenseIdentifier: {
     overwrite: true,
-    runOnCompile: true,
+    runOnCompile: false,
   },
   etherscan: {
     apiKey: etherscan_key,
