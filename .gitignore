@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+.secret*
+.infura
+.etherscan_key
+build_solc
+build
+typechain
+*.addr
+*.contract
