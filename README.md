@@ -6,9 +6,11 @@
  OxyMain.sol
 ```
 
-npx hardhat run --network rinkeby ./scripts/deploy.ts
+npx hardhat run --network rinkeby ./scripts/deploy_oxytoken.ts
 
-npx hardhat verify --network rinkeby 
+npx hardhat run --network rinkeby ./scripts/deploy_oxychef.ts
+
+npx hardhat verify --network rinkeby --constructorArgs [] 
 
 
 #Swap for centos 7.x

@@ -13,5 +13,4 @@ for (var key in path_map) {
     const data = require(key).abi;
     let output_path = path.resolve(__dirname, path_map[key])
     fs.writeFileSync(output_path, JSON.stringify(data, null, 4))
-    // fs.writeFileSync(output_path, JSON.stringify(erc20.abi, null, 4))
 }
