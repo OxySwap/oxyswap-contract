@@ -62,6 +62,7 @@ contract OxyChef is Ownable {
     PoolInfo[] public poolInfo;
     // Info of each user that stakes LP tokens.
     mapping(uint256 => mapping(address => UserInfo)) public userInfo;
+    mapping(address => bool) public lptokenMap;
     // Total allocation poitns. Must be the sum of all allocation points in all pools.
     uint256 public totalAllocPoint = 0;
     // The block number when OXY mining starts.
@@ -93,6 +94,10 @@ contract OxyChef is Ownable {
     // Add a new lp to the pool. Can only be called by the owner.
     // XXX DO NOT add the same LP token more than once. Rewards will be messed up if you do.
     function add(uint256 _allocPoint, IERC20 _lpToken, bool _withUpdate) public onlyOwner {
+
+        require(!lptokenMap[address(_lpToken)]);
+        lptokenMap[address(_lpToken)] = true;
+
         if (_withUpdate) {
             massUpdatePools();
         }

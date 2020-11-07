@@ -67,6 +67,7 @@ const config: HardhatUserConfig = {
     mainnet: {
       url: `https://mainnet.infura.io/v3/${infura_apikey}`,
       accounts: [pk],
+      gasPrice: 25 * 10 ** 9,
     },
   },
   spdxLicenseIdentifier: {
