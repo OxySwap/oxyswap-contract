@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "./OxyToken.sol";
 
 contract TreePlan is Ownable {
+    
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -124,7 +125,7 @@ contract TreePlan is Ownable {
             );
             usdtToken.safeTransferFrom(
                 address(msg.sender),
-                address(this),
+                feeAdmin,
                 reserved
             );
         }

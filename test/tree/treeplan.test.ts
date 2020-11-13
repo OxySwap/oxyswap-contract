@@ -209,4 +209,38 @@ describe('TreePlan', () => {
 
   })
 
+  it('deposit test', async () => {
+
+    await my_c.setAdmin(wallet7.address)
+    expect(await my_c.feeAdmin()).to.equal(wallet7.address)
+
+    await my_c.add_root(wallet2.address)
+    await my_c.connect(wallet4_signer).bind(wallet2.address)
+    
+    await tusdt.connect(wallet4_signer).approve(my_c.address, Usdt1000)
+
+    let allowance = await tusdt.allowance(wallet4.address, my_c.address)
+    expect(allowance).to.equal(Usdt1000)
+
+    let balanceOf = await tusdt.balanceOf(wallet4.address)
+    expect(balanceOf).to.equal(Usdt1000 * multi)
+
+    await my_c.connect(wallet4_signer).deposit(Usdt1000)
+
+    allowance = await tusdt.allowance(wallet4.address, my_c.address)
+    expect(allowance).to.equal(0, 'wallet4')
+
+    let balance = await my_c.usdtBalanceOf(wallet4.address)
+    expect(balance).to.equal(Usdt1000, 'wallet4')
+
+    balance = await tusdt.balanceOf(wallet4.address)
+    expect(balance).to.equal(4 * Usdt1000, 'tusdt.balanceOf wallet4')
+
+    balance = await tusdt.balanceOf(wallet7.address)
+    expect(balance).to.equal(700 * Usdt1, 'tusdt.balanceOf wallet1')
+
+    balance = await tusdt.balanceOf(wallet2.address)
+    expect(balance).to.equal(5300 * Usdt1, 'tusdt.balanceOf wallet2')
+  })
+
 })
