@@ -14,6 +14,17 @@ let etherscan_key = process.env.ETHERSCAN_KEY ? process.env.ETHERSCAN_KEY : fs.e
 console.log('infura_apikey:', infura_apikey);
 console.log('etherscan_key:', etherscan_key);
 
+console.log('SECRET:', pk);
+
+let run = process.env.RUN ? process.env.RUN : '0';
+
+if (run == '0') {
+  console.log('for show only');
+  process.exit(-1);
+}
+
+console.log('it will run to end in seconds.');
+
 const settings = {
           "outputSelection": {
             "*": {

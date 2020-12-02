@@ -10,8 +10,7 @@ async function main() {
   let contract = await factory.deploy();
   
   await contract.deployed();
-  let fpath = path.resolve(__dirname, name + '_' + network + '.addr');
-  fs.writeFileSync(fpath, contract.address);
+  
   printToFile(name, network, contract, []);
 }
 

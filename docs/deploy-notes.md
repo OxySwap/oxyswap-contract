@@ -9,6 +9,9 @@ FEE_TO_SETTER=0x42e225fA5A8E40B1F2446Ed8558aBf5a7bF4db84 npx hardhat run --netwo
 FACTORY_ADDR= NETWORK=rinkeby npx hardhat run --network rinkeby ./scripts/deploy_uniswap_route.ts
 FACTORY_ADDR= NETWORK=mainnet npx hardhat run --network mainnet ./scripts/deploy_uniswap_route.ts
 
+NETWORK=rinkeby npx hardhat run --network rinkeby ./scripts/deploy_oxytoken.ts
+NETWORK=mainnet npx hardhat run --network mainnet ./scripts/deploy_oxytoken.ts
+
 npx hardhat verify --network rinkeby --constructorArgs [] 
 
 
@@ -22,4 +25,4 @@ sudo swapon /swapfile
 sudo vim /etc/fstab
 /swapfile   swap    swap    sw  0   0
 
-sudo sysctl vm.swappiness=50
+sudo sysctl vm.swappiness=70
